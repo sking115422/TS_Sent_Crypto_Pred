@@ -1,4 +1,4 @@
-#Cryptocurreny Prediction Model - Vader & LSTM
+# Cryptocurreny Prediction Model - Vader & LSTM
 
 ## Important Links
 
