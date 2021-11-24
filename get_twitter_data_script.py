@@ -2,6 +2,7 @@
 
 import twint as t
 from datetime import date
+from datetime import datetime as dt
 import os
 from os.path import exists
 
@@ -14,6 +15,12 @@ nest_asyncio.apply()
 today = date.today()
 today = str(today)
 print("Today's date:", today)
+
+now = dt.now()
+
+hour = now.strftime("%H:%M:%S")
+hour = str(hour)
+print(hour)
 
 path = "./data/twitter/" + today
 
@@ -48,10 +55,10 @@ for dat_thang in s_list:
     # Configure
     c = t.Config()
     c.Search = dat_thang
-    c.Limit = "10000"
+    c.Limit = "1500"
     c.Lang = "en"
     c.Store_json = True
-    c.Output = "./data/twitter/" + today + "/BTC/" + dat_thang + ".json"
+    c.Output = "./data/twitter/" + today + "/BTC/" + dat_thang + "-" + hour + ".json"
 
     # Run
     t.run.Search(c)
@@ -67,10 +74,10 @@ for dat_thang in s_list:
     # Configure
     c = t.Config()
     c.Search = dat_thang
-    c.Limit = "10000"
+    c.Limit = "1500"
     c.Lang = "en"
     c.Store_json = True
-    c.Output = "./data/twitter/" + today + "/ETH/" + dat_thang + ".json"
+    c.Output = "./data/twitter/" + today + "/ETH/" + dat_thang + "-" + hour + ".json"
 
     # Run
     t.run.Search(c)
@@ -86,10 +93,10 @@ for dat_thang in s_list:
     # Configure
     c = t.Config()
     c.Search = dat_thang
-    c.Limit = "10000"
+    c.Limit = "1500"
     c.Lang = "en"
     c.Store_json = True
-    c.Output = "./data/twitter/" + today + "/XRP/" + dat_thang + ".json"
+    c.Output = "./data/twitter/" + today + "/XRP/" + dat_thang + "-" + hour + ".json"
 
     # Run
     t.run.Search(c)
@@ -105,10 +112,10 @@ for dat_thang in s_list:
     # Configure
     c = t.Config()
     c.Search = dat_thang
-    c.Limit = "5000"
+    c.Limit = "500"
     c.Lang = "en"
     c.Store_json = True
-    c.Output = "./data/twitter/" + today + "/gen/" + dat_thang + ".json"
+    c.Output = "./data/twitter/" + today + "/gen/" + dat_thang + "-" + hour + ".json"
 
     # Run
     t.run.Search(c)
