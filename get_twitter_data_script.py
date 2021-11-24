@@ -1,0 +1,116 @@
+
+
+import twint as t
+from datetime import date
+import os
+from os.path import exists
+
+#To make twint run inside juypter notebook
+import nest_asyncio 
+
+nest_asyncio.apply()
+
+
+today = date.today()
+today = str(today)
+print("Today's date:", today)
+
+path = "./data/twitter/" + today
+
+if exists(path) == False:
+    os.mkdir(path)
+
+    path_btc = "./data/twitter/" + today + "/BTC"
+    path_eth = "./data/twitter/" + today + "/ETH"
+    path_xrp = "./data/twitter/" + today + "/XRP"
+    path_gen = "./data/twitter/" + today + "/gen"
+
+    if exists(path_btc) == False:
+        os.mkdir(path_btc)
+        
+    if exists(path_eth) == False:
+        os.mkdir(path_eth)
+        
+    if exists(path_xrp) == False:
+        os.mkdir(path_xrp)
+        
+    if exists(path_gen) == False:
+        os.mkdir(path_gen)
+
+
+##BTC Tweets Gatherer
+
+# Search List
+s_list = ['#BTC', '#bitcoin']
+
+for dat_thang in s_list:
+
+    # Configure
+    c = t.Config()
+    c.Search = dat_thang
+    c.Limit = "10000"
+    c.Lang = "en"
+    c.Store_json = True
+    c.Output = "./data/twitter/" + today + "/BTC/" + dat_thang + ".json"
+
+    # Run
+    t.run.Search(c)
+
+
+##ETH Tweets Gatherer
+
+# Search List
+s_list = ['#ETH', '#ethereum']
+
+for dat_thang in s_list:
+
+    # Configure
+    c = t.Config()
+    c.Search = dat_thang
+    c.Limit = "10000"
+    c.Lang = "en"
+    c.Store_json = True
+    c.Output = "./data/twitter/" + today + "/ETH/" + dat_thang + ".json"
+
+    # Run
+    t.run.Search(c)
+    
+
+##XRP Tweets Gatherer
+
+# Search List
+s_list = ['#XRP', 'ripple']
+
+for dat_thang in s_list:
+
+    # Configure
+    c = t.Config()
+    c.Search = dat_thang
+    c.Limit = "10000"
+    c.Lang = "en"
+    c.Store_json = True
+    c.Output = "./data/twitter/" + today + "/XRP/" + dat_thang + ".json"
+
+    # Run
+    t.run.Search(c)
+    
+
+##General Crypto Info Gatherer
+
+# Search List
+s_list = ['#crypto', '#cryptocurrency', '#cryptoworld', '#cryptotrading', '#cryptocurrencies', '#cryptonews']
+
+for dat_thang in s_list:
+
+    # Configure
+    c = t.Config()
+    c.Search = dat_thang
+    c.Limit = "5000"
+    c.Lang = "en"
+    c.Store_json = True
+    c.Output = "./data/twitter/" + today + "/gen/" + dat_thang + ".json"
+
+    # Run
+    t.run.Search(c)
+
+
