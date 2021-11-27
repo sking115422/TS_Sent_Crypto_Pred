@@ -18,7 +18,7 @@ print("Today's date:", today)
 
 now = dt.now()
 
-hour = now.strftime("%H:%M:%S")
+hour = now.strftime("%H_%M_%S")
 hour = str(hour)
 print(hour)
 
