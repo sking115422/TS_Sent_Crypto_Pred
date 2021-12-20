@@ -86,7 +86,7 @@ for dat_thang in s_list:
 ##XRP Tweets Gatherer
 
 # Search List
-s_list = ['#XRP', 'ripple']
+s_list = ['#XRP', '#ripple']
 
 for dat_thang in s_list:
 
